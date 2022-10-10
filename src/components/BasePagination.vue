@@ -2,7 +2,7 @@
   <ul class="catalog__pagination pagination">
     <li class="pagination__item">
       <a href="#" class="pagination__link pagination__link--arrow" aria-label="Предыдущая страница"
-        @click.prevent="paginate(previousPage)" :class="{'pagination__link--disabled': page == 1}">
+        @click.prevent="paginate(previousPage)" :class="{'pagination__link--disabled': page === 1}">
         <svg width="8" height="14" fill="currentColor">
           <use xlink:href="#icon-arrow-left"></use>
         </svg>

@@ -5,12 +5,13 @@
         Каталог
       </h1>
       <span class="content__info">
-        152 товара
+        {{ countProducts }} товара(ов)
       </span>
     </div>
 
     <div class="content__catalog">
-      <ProductFilter :price-from.sync="filterPriceFrom"  :price-to.sync="filterPriceTo" :category-id.sync="filterCategoryId"/>
+      <ProductFilter :price-from.sync="filterPriceFrom" :price-to.sync="filterPriceTo"
+      :category-id.sync="filterCategoryId" :color-id.sync="filterColorId" />
       <section class="catalog">
         <ProductList :products="products" />
         <BasePagination v-model="page" :count="countProducts" :per-page="productsPerPage" />
@@ -33,13 +34,14 @@ export default {
       filterPriceFrom: 0,
       filterPriceTo: 0,
       filterCategoryId: 0,
+      filterColorId: 0,
       page: 1,
       productsPerPage: 3,
-      // products,
     };
   },
   computed: {
     filteredProducts() {
+      this.page = 1;
       let filteredProducts = products;
 
       if (this.filterPriceFrom > 0) {
@@ -52,6 +54,10 @@ export default {
 
       if (this.filterCategoryId > 0) {
         filteredProducts = filteredProducts.filter(product => product.categoryId === this.filterCategoryId);
+      }
+
+      if (this.filterColorId > 0) {
+        filteredProducts = filteredProducts.filter(product => product.colorId === this.filterColorId);
       }
 
       return filteredProducts;
