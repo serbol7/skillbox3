@@ -1,11 +1,11 @@
 <template>
   <ul class="catalog__list">
-    <ProductItem  v-for="product in products" :product="product" :key="product.id" />
+    <ProductItem  v-for="product in products" :product="product" :key="product.id" @gotoPage="(pageName, pageParams) => $emit('gotoPage', pageName, pageParams)" />
   </ul>
 </template>
 
 <script>
-import ProductItem from './ProductItem.vue';
+import ProductItem from '@/components/ProductItem.vue';
 
 export default {
   props: ['products'],
