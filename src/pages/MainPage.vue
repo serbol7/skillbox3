@@ -11,7 +11,7 @@
 
     <div class="content__catalog">
       <ProductFilter :price-from.sync="filterPriceFrom" :price-to.sync="filterPriceTo"
-      :category-id.sync="filterCategoryId" :color-id.sync="filterColorId" />
+        :category-id.sync="filterCategoryId" :color-id.sync="filterColorId" />
       <section class="catalog">
         <ProductList :products="products" />
         <BasePagination v-model="page" :count="countProducts" :per-page="productsPerPage" />
@@ -40,29 +40,39 @@ export default {
   },
   computed: {
     filteredProducts() {
-      this.page = 1;
       let filteredProducts = products;
 
       if (this.filterPriceFrom > 0) {
-        filteredProducts = filteredProducts.filter(product => product.price > this.filterPriceFrom);
+        filteredProducts = filteredProducts.filter(
+          (product) => (product.price > this.filterPriceFrom),
+        );
       }
 
       if (this.filterPriceTo > 0) {
-        filteredProducts = filteredProducts.filter(product => product.price < this.filterPriceTo);
+        filteredProducts = filteredProducts.filter(
+          (product) => (product.price < this.filterPriceTo),
+        );
       }
 
       if (this.filterCategoryId > 0) {
-        filteredProducts = filteredProducts.filter(product => product.categoryId === this.filterCategoryId);
+        filteredProducts = filteredProducts.filter(
+          (product) => (product.categoryId === this.filterCategoryId),
+        );
       }
 
       if (this.filterColorId > 0) {
-        filteredProducts = filteredProducts.filter(product => product.colorId === this.filterColorId);
+        filteredProducts = filteredProducts.filter(
+          (product) => (product.colorId === this.filterColorId),
+        );
       }
 
       return filteredProducts;
     },
     products() {
-      const offset = (this.page - 1) * this.productsPerPage;
+      let offset = (this.page - 1) * this.productsPerPage;
+      if (offset > this.filteredProducts.length) {
+        offset = 0;
+      }
       return this.filteredProducts.slice(offset, offset + this.productsPerPage);
     },
     countProducts() {
