@@ -23,8 +23,7 @@
     <section class="item">
       <div class="item__pics pics">
         <div class="pics__wrapper">
-          <img width="570" height="570" :src="product.image"
-          :alt="product.title">
+          <img width="570" height="570" :src="product.image" :alt="product.title">
         </div>
       </div>
 
@@ -42,28 +41,15 @@
             <fieldset class="form__block">
               <legend class="form__legend">Цвет:</legend>
               <ul class="colors">
-                <li class="colors__item">
-                  <label class="colors__label" for="id1">
+                <li class="colors__item" v-for="color in product.colors"
+                :key="color.id">
+                  <label class="colors__label" :for="color.id">
                     <input class="colors__radio sr-only" type="radio"
-                    id="id1" name="color-item" value="blue" checked="">
-                    <span class="colors__value" style="background-color: #73B6EA;">
+                    :id="color.id" name="color-item"
+                      :value="color.id">
+                    <span class="colors__value" :style="{ 'background-color': color.code }">
                     </span>
                   </label>
-                </li>
-                <li class="colors__item">
-                  <label class="colors__label" for="id2">
-                    <input class="colors__radio sr-only" type="radio"
-                    id="id2" name="color-item" value="yellow">
-                    <span class="colors__value" style="background-color: #FFBE15;">
-                    </span>
-                  </label>
-                </li>
-                <li class="colors__item">
-                  <label class="colors__label" for="id3">
-                    <input class="colors__radio sr-only" type="radio"
-                    id="id3" name="color-item" value="gray">
-                    <span class="colors__value" style="background-color: #939393;">
-                    </span></label>
                 </li>
               </ul>
             </fieldset>
@@ -93,7 +79,8 @@
                 <li class="sizes__item">
                   <label class="sizes__label" for="128gb">
                     <input class="sizes__radio sr-only" type="radio"
-                    id="128gb" name="sizes-item" value="128" checked="">
+                    id="128gb" name="sizes-item" value="128"
+                      checked="">
                     <span class="sizes__value">
                       128gb
                     </span>

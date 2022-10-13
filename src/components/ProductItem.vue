@@ -15,10 +15,10 @@
     </span>
 
     <ul class="colors colors--black">
-      <li class="colors__item">
-        <label class="colors__label" :for="product.image">
+      <li class="colors__item" v-for="color in product.colors" :key="product.id * 100 + color.id">
+        <label class="colors__label" :for="product.id * 100 + color.id">
           <input class="colors__radio sr-only" type="radio" name="color"
-          :id="product.image" :value="color.id">
+          :id="product.id * 100 + color.id" :value="product.id * 100 + color.id">
           <span class="colors__value" :style="{ 'background-color': color.code }"
           style="border: 1px solid black;">
           </span>
@@ -46,8 +46,8 @@ export default {
     colors() {
       return colors;
     },
-    color() {
-      return colors.find((color) => color.id === this.product.colorId);
+    colorKey(productId, colorId) {
+      return productId * 100 + colorId;
     },
   },
   methods: {
