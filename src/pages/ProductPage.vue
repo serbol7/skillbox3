@@ -213,7 +213,7 @@ export default {
       return colors;
     },
     colorCode() {
-      return (colorId) => colors.filter((color) => color.id === colorId)[0].code;
+      return (colorId) => colors.find((color) => color.id === colorId).code;
     },
   },
   filters: {

@@ -51,7 +51,7 @@ export default {
       return (productId, colorId) => (productId * 100 + colorId);
     },
     colorCode() {
-      return (colorId) => colors.filter((color) => color.id === colorId)[0].code;
+      return (colorId) => colors.find((color) => color.id === colorId).code;
     },
   },
   methods: {
