@@ -5,7 +5,7 @@
     </a>
 
     <h3 class="catalog__title">
-      <a href="#">
+      <a href="#" @click.prevent="gotoPage('product', {id: product.id})">
         {{ product.title }}
       </a>
     </h3>
