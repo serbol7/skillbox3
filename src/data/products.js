@@ -6,9 +6,9 @@ export default [
     title: 'Тонометр B.Well MED-61 [на плечо, манжета от 220 мм до 420 мм ]',
     price: 5990,
     colors: [
-      { id: 2, title: 'Оранжевый', code: '#FFBE15' },
-      { id: 3, title: 'Серый', code: '#939393' },
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
+      { id: 2 },
+      { id: 3 },
+      { id: 4 },
     ],
   },
   {
@@ -18,9 +18,9 @@ export default [
     title: 'Тонометр B.Well PRO-60 [на плечо, фонендоскоп, манжета от 220 мм до 420 мм ]',
     price: 6990,
     colors: [
-      { id: 1, title: 'Синий', code: '#73B6EA' },
-      { id: 2, title: 'Оранжевый', code: '#FFBE15' },
-      { id: 3, title: 'Серый', code: '#939393' },
+      { id: 1 },
+      { id: 2 },
+      { id: 3 },
     ],
   },
   {
@@ -30,9 +30,9 @@ export default [
     title: 'Тонометр B.Well MED-62 [на плечо, фонендоскоп, манжета от 220 мм до 420 мм ]',
     price: 7390,
     colors: [
-      { id: 5, title: 'Красный', code: '#FF6B00' },
-      { id: 6, title: 'Белый', code: '#FFF' },
-      { id: 7, title: 'Черный', code: '#000' },
+      { id: 5 },
+      { id: 6 },
+      { id: 7 },
     ],
   },
   {
@@ -42,9 +42,9 @@ export default [
     title: 'Тонометр B.Well MED-63 [на плечо, фонендоскоп, манжета от 220 мм до 420 мм ]',
     price: 7590,
     colors: [
-      { id: 1, title: 'Синий', code: '#73B6EA' },
-      { id: 2, title: 'Оранжевый', code: '#FFBE15' },
-      { id: 3, title: 'Серый', code: '#939393' },
+      { id: 1 },
+      { id: 2 },
+      { id: 3 },
     ],
   },
   {
@@ -54,9 +54,9 @@ export default [
     title: 'Тонометр B.Well PRO-30 [на плечо, индикация аритмии, манжета от 220 мм до 320 мм ]',
     price: 11490,
     colors: [
-      { id: 2, title: 'Оранжевый', code: '#FFBE15' },
-      { id: 3, title: 'Серый', code: '#939393' },
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
+      { id: 2 },
+      { id: 3 },
+      { id: 4 },
     ],
   },
   {
@@ -66,9 +66,9 @@ export default [
     title: 'Тонометр B.Well PRO-39 [на запястье, индикация аритмии, манжета от 140 мм до 195 мм ]',
     price: 12990,
     colors: [
-      { id: 5, title: 'Красный', code: '#FF6B00' },
-      { id: 6, title: 'Белый', code: '#FFF' },
-      { id: 7, title: 'Черный', code: '#000' },
+      { id: 5 },
+      { id: 6 },
+      { id: 7 },
     ],
   },
   {
@@ -78,9 +78,9 @@ export default [
     title: 'Тонометр B.Well MED-57 [на запястье, индикация аритмии, манжета от 135 мм до 215 мм ]',
     price: 15790,
     colors: [
-      { id: 1, title: 'Синий', code: '#73B6EA' },
-      { id: 2, title: 'Оранжевый', code: '#FFBE15' },
-      { id: 3, title: 'Серый', code: '#939393' },
+      { id: 1 },
+      { id: 2 },
+      { id: 3 },
     ],
   },
   {
@@ -90,9 +90,9 @@ export default [
     title: 'Тонометр B.Well MED-53 [на плечо, индикация аритмии, манжета от 240 мм до 420 мм ]',
     price: 19490,
     colors: [
-      { id: 2, title: 'Оранжевый', code: '#FFBE15' },
-      { id: 3, title: 'Серый', code: '#939393' },
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
+      { id: 2 },
+      { id: 3 },
+      { id: 4 },
     ],
   },
   {
@@ -102,9 +102,9 @@ export default [
     title: 'Тонометр B.Well A-23 [на плечо, индикация аритмии, манжета от 220 мм до 360 мм ]',
     price: 19990,
     colors: [
-      { id: 5, title: 'Красный', code: '#FF6B00' },
-      { id: 6, title: 'Белый', code: '#FFF' },
-      { id: 7, title: 'Черный', code: '#000' },
+      { id: 5 },
+      { id: 6 },
+      { id: 7 },
     ],
   },
   {
@@ -114,9 +114,9 @@ export default [
     title: 'Весы DEXP SCGM-26P зеленый [электронные, материал - стекло, точность - 100 г, вес до - 180 кг]',
     price: 3590,
     colors: [
-      { id: 1, title: 'Синий', code: '#73B6EA' },
-      { id: 2, title: 'Оранжевый', code: '#FFBE15' },
-      { id: 3, title: 'Серый', code: '#939393' },
+      { id: 1 },
+      { id: 2 },
+      { id: 3 },
     ],
   },
   {
@@ -126,9 +126,9 @@ export default [
     title: 'Весы DEXP SCM-30P черный [электронные, материал - стекло, точность - 100 г, вес до - 180 кг]',
     price: 3590,
     colors: [
-      { id: 2, title: 'Оранжевый', code: '#FFBE15' },
-      { id: 3, title: 'Серый', code: '#939393' },
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
+      { id: 2 },
+      { id: 3 },
+      { id: 4 },
     ],
   },
   {
@@ -138,9 +138,9 @@ export default [
     title: 'Весы DEXP SC-20 серый [электронные, материал - стекло, точность - 100 г, вес до - 180 кг]',
     price: 3990,
     colors: [
-      { id: 3, title: 'Серый', code: '#939393' },
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
-      { id: 5, title: 'Красный', code: '#FF6B00' },
+      { id: 3 },
+      { id: 4 },
+      { id: 5 },
     ],
   },
   {
@@ -150,9 +150,9 @@ export default [
     title: 'Весы DEXP SCI-30P серый [электронные, материал - стекло, точность - 100 г, вес до - 180 кг]',
     price: 4190,
     colors: [
-      { id: 1, title: 'Синий', code: '#73B6EA' },
-      { id: 2, title: 'Оранжевый', code: '#FFBE15' },
-      { id: 3, title: 'Серый', code: '#939393' },
+      { id: 1 },
+      { id: 2 },
+      { id: 3 },
     ],
   },
   {
@@ -162,9 +162,9 @@ export default [
     title: 'Медицинский термометр B.Well WT-03 [белый, синий, аксиллярный, ректальный, оральный, точность +/- 0.1°C, автоотключение, дисплей, в футляре]',
     price: 2090,
     colors: [
-      { id: 3, title: 'Серый', code: '#939393' },
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
-      { id: 5, title: 'Красный', code: '#FF6B00' },
+      { id: 3 },
+      { id: 4 },
+      { id: 5 },
     ],
   },
   {
@@ -174,9 +174,9 @@ export default [
     title: 'Медицинский термометр B.Well WT-04 [белый, синий, аксиллярный, ректальный, оральный, точность +/- 0.1°C, автоотключение, дисплей]',
     price: 2790,
     colors: [
-      { id: 2, title: 'Оранжевый', code: '#FFBE15' },
-      { id: 3, title: 'Серый', code: '#939393' },
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
+      { id: 2 },
+      { id: 3 },
+      { id: 4 },
     ],
   },
   {
@@ -186,9 +186,9 @@ export default [
     title: 'Медицинский термометр B.Well WF-1000 [белый, синий, лобный, ушной, бесконтактный, точность +/-0.2°C, автоотключение, дисплей]',
     price: 12990,
     colors: [
-      { id: 3, title: 'Серый', code: '#939393' },
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
-      { id: 5, title: 'Красный', code: '#FF6B00' },
+      { id: 3 },
+      { id: 4 },
+      { id: 5 },
     ],
   },
   {
@@ -198,9 +198,9 @@ export default [
     title: 'Радионяня Motorola MBP16',
     price: 3690,
     colors: [
-      { id: 2, title: 'Оранжевый', code: '#FFBE15' },
-      { id: 3, title: 'Серый', code: '#939393' },
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
+      { id: 2 },
+      { id: 3 },
+      { id: 4 },
     ],
   },
   {
@@ -210,9 +210,9 @@ export default [
     title: 'Ультразвуковая зубная щётка Playbrush Smart Sonic',
     price: 5660,
     colors: [
-      { id: 2, title: 'Оранжевый', code: '#FFBE15' },
-      { id: 3, title: 'Серый', code: '#939393' },
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
+      { id: 2 },
+      { id: 3 },
+      { id: 4 },
     ],
   },
   {
@@ -222,9 +222,9 @@ export default [
     title: 'Смартфон Xiaomi Mi Mix 3 6/128GB',
     price: 21790,
     colors: [
-      { id: 2, title: 'Оранжевый', code: '#FFBE15' },
-      { id: 3, title: 'Серый', code: '#939393' },
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
+      { id: 2 },
+      { id: 3 },
+      { id: 4 },
     ],
   },
   {
@@ -234,9 +234,9 @@ export default [
     title: 'Электроскейт Razor Cruiser',
     price: 24690,
     colors: [
-      { id: 2, title: 'Оранжевый', code: '#FFBE15' },
-      { id: 3, title: 'Серый', code: '#939393' },
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
+      { id: 2 },
+      { id: 3 },
+      { id: 4 },
     ],
   },
   {
@@ -246,9 +246,9 @@ export default [
     title: 'Смартфон Xiaomi Mi A3 4/64GB Android One',
     price: 14960,
     colors: [
-      { id: 3, title: 'Серый', code: '#939393' },
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
-      { id: 5, title: 'Красный', code: '#FF6B00' },
+      { id: 3 },
+      { id: 4 },
+      { id: 5 },
     ],
   },
   {
@@ -258,9 +258,9 @@ export default [
     title: 'Смартфон Xiaomi Redmi 6/128GB',
     price: 8960,
     colors: [
-      { id: 3, title: 'Серый', code: '#939393' },
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
-      { id: 5, title: 'Красный', code: '#FF6B00' },
+      { id: 3 },
+      { id: 4 },
+      { id: 5 },
     ],
   },
   {
@@ -270,9 +270,9 @@ export default [
     title: 'Электрический дрифт-карт Razor Crazy Cart',
     price: 39900,
     colors: [
-      { id: 3, title: 'Серый', code: '#939393' },
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
-      { id: 5, title: 'Красный', code: '#FF6B00' },
+      { id: 3 },
+      { id: 4 },
+      { id: 5 },
     ],
   },
   {
@@ -282,9 +282,9 @@ export default [
     title: 'Гироскутер Razor Hovertrax 2.0',
     price: 34900,
     colors: [
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
-      { id: 5, title: 'Красный', code: '#FF6B00' },
-      { id: 6, title: 'Белый', code: '#FFF' },
+      { id: 4 },
+      { id: 5 },
+      { id: 6 },
     ],
   },
   {
@@ -294,9 +294,9 @@ export default [
     title: 'Детский трюковой самокат Razor Grom',
     price: 4990,
     colors: [
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
-      { id: 5, title: 'Красный', code: '#FF6B00' },
-      { id: 6, title: 'Белый', code: '#FFF' },
+      { id: 4 },
+      { id: 5 },
+      { id: 6 },
     ],
   },
   {
@@ -306,9 +306,9 @@ export default [
     title: 'Роллерсёрф Razor RipStik Air Pro',
     price: 6690,
     colors: [
-      { id: 4, title: 'Зеленый', code: '#8BE000' },
-      { id: 5, title: 'Красный', code: '#FF6B00' },
-      { id: 6, title: 'Белый', code: '#FFF' },
+      { id: 4 },
+      { id: 5 },
+      { id: 6 },
     ],
   },
   {
@@ -318,9 +318,9 @@ export default [
     title: 'Наушники AirPods с беспроводным зарядным футляром',
     price: 16560,
     colors: [
-      { id: 5, title: 'Красный', code: '#FF6B00' },
-      { id: 6, title: 'Белый', code: '#FFF' },
-      { id: 7, title: 'Черный', code: '#000' },
+      { id: 5 },
+      { id: 6 },
+      { id: 7 },
     ],
   },
   {
@@ -330,9 +330,9 @@ export default [
     title: 'Наушники Sony',
     price: 30690,
     colors: [
-      { id: 5, title: 'Красный', code: '#FF6B00' },
-      { id: 6, title: 'Белый', code: '#FFF' },
-      { id: 7, title: 'Черный', code: '#000' },
+      { id: 5 },
+      { id: 6 },
+      { id: 7 },
     ],
   },
   {
@@ -342,9 +342,9 @@ export default [
     title: 'Смартфон Xiaomi Mi Mix 3 6/128GB, red',
     price: 21790,
     colors: [
-      { id: 5, title: 'Красный', code: '#FF6B00' },
-      { id: 6, title: 'Белый', code: '#FFF' },
-      { id: 7, title: 'Черный', code: '#000' },
+      { id: 5 },
+      { id: 6 },
+      { id: 7 },
     ],
   },
 ];
