@@ -15,11 +15,12 @@
     </span>
 
     <ul class="colors colors--black">
-      <li class="colors__item" v-for="color in product.colors" :key="product.id * 100 + color.id">
-        <label class="colors__label" :for="product.id * 100 + color.id">
+      <li class="colors__item" v-for="icolor in product.colors"
+      :key="colorKey(product.id, icolor.id)">
+        <label class="colors__label" :for="colorKey(product.id, icolor.id)">
           <input class="colors__radio sr-only" type="radio" name="color"
-          :id="product.id * 100 + color.id" :value="product.id * 100 + color.id">
-          <span class="colors__value" :style="{ 'background-color': color.code }"
+          :id="colorKey(product.id, icolor.id)" :value="colorKey(product.id, icolor.id)">
+          <span class="colors__value" :style="{ 'background-color': colorCode(icolor.id) }"
           style="border: 1px solid black;">
           </span>
         </label>
@@ -46,8 +47,11 @@ export default {
     colors() {
       return colors;
     },
-    colorKey(productId, colorId) {
-      return productId * 100 + colorId;
+    colorKey() {
+      return (productId, colorId) => (productId * 100 + colorId);
+    },
+    colorCode() {
+      return (colorId) => colors.filter((color) => color.id === colorId)[0].code;
     },
   },
   methods: {

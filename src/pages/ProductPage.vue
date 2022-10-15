@@ -41,13 +41,14 @@
             <fieldset class="form__block">
               <legend class="form__legend">Цвет:</legend>
               <ul class="colors">
-                <li class="colors__item" v-for="color in product.colors"
-                :key="color.id">
-                  <label class="colors__label" :for="color.id">
+                <li class="colors__item" v-for="icolor in product.colors"
+                :key="icolor.id">
+                  <label class="colors__label" :for="icolor.id">
                     <input class="colors__radio sr-only" type="radio"
-                    :id="color.id" name="color-item"
-                      :value="color.id">
-                    <span class="colors__value" :style="{ 'background-color': color.code }">
+                    :id="icolor.id" name="color-item"
+                      :value="icolor.id">
+                    <span class="colors__value"
+                    :style="{ 'background-color': colorCode(icolor.id) }">
                     </span>
                   </label>
                 </li>
@@ -195,6 +196,7 @@
 <script>
 import products from '@/data/products';
 import categories from '@/data/categories';
+import colors from '@/data/colors';
 import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
 
@@ -206,6 +208,12 @@ export default {
     },
     category() {
       return categories.find((category) => category.id === this.product.categoryId);
+    },
+    colors() {
+      return colors;
+    },
+    colorCode() {
+      return (colorId) => colors.filter((color) => color.id === colorId)[0].code;
     },
   },
   filters: {
