@@ -3,14 +3,14 @@
     <div class="content__top">
       <ul class="breadcrumbs">
         <li class="breadcrumbs__item">
-          <a class="breadcrumbs__link" href="#" @click.prevent="gotoPage('main')">
+          <router-link class="breadcrumbs__link" href="#" :to="{ name: 'main' }">
             Каталог
-          </a>
+          </router-link>
         </li>
         <li class="breadcrumbs__item">
-          <a class="breadcrumbs__link" href="#" @click.prevent="gotoPage('main')">
+          <router-link class="breadcrumbs__link" href="#" :to="{ name: 'main' }">
             {{ category.title }}
-          </a>
+          </router-link>
         </li>
         <li class="breadcrumbs__item">
           <a class="breadcrumbs__link">
@@ -33,7 +33,7 @@
           {{ product.title }}
         </h2>
         <div class="item__form">
-          <form class="form" action="#" method="POST">
+          <form class="form" action="#" method="POST" @submit.prevent="addToCart">
             <b class="item__price">
               {{ product.price | numberFormat }} ₽
             </b>
@@ -92,17 +92,20 @@
 
             <div class="item__row">
               <div class="form__counter">
-                <button type="button" aria-label="Убрать один товар">
+                <button type="button" aria-label="Убрать один товар" class="button"
+                @click.prevent="productAmount <= 1 ? 1 : productAmount--">
                   <svg width="12" height="12" fill="currentColor">
                     <use xlink:href="#icon-minus"></use>
                   </svg>
                 </button>
 
                 <label for="1">
-                  <input type="text" value="1" name="count" id="1">
+                  <input type="text" id="1" v-model.number="productAmount"
+                  pattern="[0-9]{,3}">
                 </label>
 
-                <button type="button" aria-label="Добавить один товар">
+                <button type="button" aria-label="Добавить один товар"
+                @click.prevent="productAmount++" class="button">
                   <svg width="12" height="12" fill="currentColor">
                     <use xlink:href="#icon-plus"></use>
                   </svg>
@@ -201,10 +204,14 @@ import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
 
 export default {
-  props: ['pageParams'],
+  data() {
+    return {
+      productAmount: 1,
+    };
+  },
   computed: {
     product() {
-      return products.find((product) => product.id === this.pageParams.id);
+      return products.find((product) => product.id === +this.$route.params.id);
     },
     category() {
       return categories.find((category) => category.id === this.product.categoryId);
@@ -221,6 +228,17 @@ export default {
   },
   methods: {
     gotoPage,
+    addToCart() {
+      if (this.productAmount < 1) {
+        this.productAmount = 1;
+        alert('Некорректное значение количества товара. Укажите 1 и более единиц товара!');
+      } else {
+        this.$store.commit(
+          'addProductToCart',
+          { productId: this.product.id, amount: this.productAmount },
+        );
+      }
+    },
   },
 };
 </script>
