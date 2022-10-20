@@ -1,5 +1,8 @@
 <template>
-  <main class="content container">
+  <main class="content container" v-if="productLoading">Загрузка товара...</main>
+  <main class="content container" v-else-if="productLoadingFailed">
+    Не удалось загрузить товар!</main>
+  <main class="content container" v-else>
     <div class="content__top">
       <ul class="breadcrumbs">
         <li class="breadcrumbs__item">
@@ -48,42 +51,7 @@
                     :id="icolor.id" name="color-item"
                       :value="icolor.id">
                     <span class="colors__value"
-                    :style="{ 'background-color': colorCode(icolor.id) }">
-                    </span>
-                  </label>
-                </li>
-              </ul>
-            </fieldset>
-
-            <fieldset class="form__block">
-              <legend class="form__legend">Объемб в ГБ:</legend>
-
-              <ul class="sizes sizes--primery">
-                <li class="sizes__item">
-                  <label class="sizes__label" for="32gb">
-                    <input class="sizes__radio sr-only" type="radio"
-                    id="32gb" name="sizes-item" value="32">
-                    <span class="sizes__value">
-                      32gb
-                    </span>
-                  </label>
-                </li>
-                <li class="sizes__item">
-                  <label class="sizes__label" for="64gb">
-                    <input class="sizes__radio sr-only" type="radio"
-                    id="64gb" name="sizes-item" value="64">
-                    <span class="sizes__value">
-                      64gb
-                    </span>
-                  </label>
-                </li>
-                <li class="sizes__item">
-                  <label class="sizes__label" for="128gb">
-                    <input class="sizes__radio sr-only" type="radio"
-                    id="128gb" name="sizes-item" value="128"
-                      checked="">
-                    <span class="sizes__value">
-                      128gb
+                    :style="{ 'background-color': icolor.code }">
                     </span>
                   </label>
                 </li>
@@ -112,10 +80,13 @@
                 </button>
               </div>
 
-              <button class="button button--primery" type="submit">
+              <button class="button button--primery" type="submit"
+              :disabled="productAddSending">
                 В корзину
               </button>
             </div>
+            <div v-show="productAdded">Товар добавлен в корзину</div>
+            <div v-show="productAddSending">Добавляем товар в корзину...</div>
           </form>
         </div>
       </div>
@@ -197,47 +168,75 @@
 </template>
 
 <script>
-import products from '@/data/products';
-import categories from '@/data/categories';
-import colors from '@/data/colors';
 import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
+import axios from 'axios';
+import API_BASE_URL from '@/config';
+import { mapActions } from 'vuex';
 
 export default {
   data() {
     return {
       productAmount: 1,
+      productData: null,
+      productLoading: false,
+      productLoadingFailed: false,
+      productAdded: false,
+      productAddSending: false,
     };
   },
   computed: {
     product() {
-      return products.find((product) => product.id === +this.$route.params.id);
+      let prod = {};
+      if (this.productData) {
+        prod = this.productData;
+        prod.image = this.productData.image.file.url;
+      }
+      return prod;
     },
     category() {
-      return categories.find((category) => category.id === this.product.categoryId);
-    },
-    colors() {
-      return colors;
-    },
-    colorCode() {
-      return (colorId) => colors.find((color) => color.id === colorId).code;
+      return this.productData.category;
     },
   },
   filters: {
     numberFormat,
   },
   methods: {
+    ...mapActions(['addProductToCart']),
     gotoPage,
     addToCart() {
+      this.productAdded = false;
+      this.productAddSending = true;
       if (this.productAmount < 1) {
         this.productAmount = 1;
-        alert('Некорректное значение количества товара. Укажите 1 и более единиц товара!');
+        // alert('Некорректное значение количества товара. Укажите 1 и более единиц товара!');
       } else {
-        this.$store.commit(
-          'addProductToCart',
-          { productId: this.product.id, amount: this.productAmount },
-        );
+        this.addProductToCart({ productId: this.product.id, amount: this.productAmount })
+          .then(() => {
+            this.productAdded = true;
+            this.productAddSending = false;
+          });
       }
+    },
+    loadProduct() {
+      this.productLoading = true;
+      this.productLoadingFailed = false;
+      clearTimeout(this.loadProductTimer);
+      this.loadProductTimer = setTimeout(() => {
+        axios
+          .get(API_BASE_URL.concat('/api/products/', this.$route.params.id))
+          .then((response) => { this.productData = response.data; })
+          .catch(() => { this.productLoadingFailed = true; })
+          .then(() => { this.productLoading = false; });
+      }, 2000);
+    },
+  },
+  watch: {
+    '$route.params.id': {
+      handler() {
+        this.loadProduct();
+      },
+      immediate: true,
     },
   },
 };

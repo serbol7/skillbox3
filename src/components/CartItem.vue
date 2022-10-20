@@ -20,7 +20,7 @@
 
       <label for="input1">
         <input type="text" v-model.number="amount"
-        pattern="[0-9]{,3}" name="count" id="input1">
+        name="count" id="input1">
       </label>
 
       <button type="button" aria-label="Добавить один товар"
@@ -36,7 +36,7 @@
     </b>
 
     <button class="button product__del button-del" aria-label="Удалить товар из корзины"
-    @click.prevent="deleteProduct(item.productId)" type="button">
+    @click.prevent="deleteProduct()" type="button">
       <svg width="20" height="20" fill="currentColor">
         <use xlink:href="#icon-close"></use>
       </svg>
@@ -46,7 +46,7 @@
 
 <script>
 import numberFormat from '@/helpers/numberFormat';
-import { mapMutations } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   filters: {
@@ -59,12 +59,21 @@ export default {
         return this.item.amount;
       },
       set(value) {
-        this.$store.commit('updateCartProductAmount', { productId: this.item.productId, amount: value });
+        // this.$store.dispatch('updateCartProductAmount',
+        // { productId: this.item.productId, amount: value });
+        this.updateCartProductAmount({
+          productId: this.item.productId,
+          amount: value,
+        });
       },
     },
   },
   methods: {
-    ...mapMutations({ deleteProduct: 'deleteCartProduct' }),
+    // ...mapMutations({ deleteProduct: 'deleteCartProduct' }),
+    ...mapActions(['updateCartProductAmount', 'deleteCartProduct']),
+    deleteProduct() {
+      this.deleteCartProduct(this.item.productId);
+    },
   },
 };
 </script>

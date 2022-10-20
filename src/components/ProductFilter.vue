@@ -43,67 +43,6 @@
         </ul>
       </fieldset>
 
-      <!-- <fieldset class="form__block">
-        <legend class="form__legend">Объемб в ГБ</legend>
-        <ul class="check-list">
-          <li class="check-list__item">
-            <label class="check-list__label">
-              <input class="check-list__check sr-only" type="checkbox"
-              name="volume" value="8" checked="">
-              <span class="check-list__desc">
-                8
-                <span>(313)</span>
-              </span>
-            </label>
-          </li>
-          <li class="check-list__item">
-            <label class="check-list__label">
-              <input class="check-list__check sr-only" type="checkbox" name="volume" value="16">
-              <span class="check-list__desc">
-                16
-                <span>(461)</span>
-              </span>
-            </label>
-          </li>
-          <li class="check-list__item">
-            <label class="check-list__label">
-              <input class="check-list__check sr-only" type="checkbox" name="volume" value="32">
-              <span class="check-list__desc">
-                32
-                <span>(313)</span>
-              </span>
-            </label>
-          </li>
-          <li class="check-list__item">
-            <label class="check-list__label">
-              <input class="check-list__check sr-only" type="checkbox" name="volume" value="64">
-              <span class="check-list__desc">
-                64
-                <span>(313)</span>
-              </span>
-            </label>
-          </li>
-          <li class="check-list__item">
-            <label class="check-list__label">
-              <input class="check-list__check sr-only" type="checkbox" name="volume" value="128">
-              <span class="check-list__desc">
-                128
-                <span>(313)</span>
-              </span>
-            </label>
-          </li>
-          <li class="check-list__item">
-            <label class="check-list__label">
-              <input class="check-list__check sr-only" type="checkbox" name="volume" value="264">
-              <span class="check-list__desc">
-                264
-                <span>(313)</span>
-              </span>
-            </label>
-          </li>
-        </ul>
-      </fieldset> -->
-
       <button class="filter__submit button button--primery" type="submit">
         Применить
       </button>
@@ -115,8 +54,8 @@
 </template>
 
 <script>
-import categories from '@/data/categories';
-import colors from '@/data/colors';
+import axios from 'axios';
+import API_BASE_URL from '@/config';
 
 export default {
   data() {
@@ -125,15 +64,17 @@ export default {
       currentPriceTo: 0,
       currentCategoryId: 0,
       currentColorId: 0,
+      categoriesData: null,
+      colorsData: null,
     };
   },
   props: ['priceFrom', 'priceTo', 'categoryId', 'colorId', 'page'],
   computed: {
     categories() {
-      return categories;
+      return this.categoriesData ? this.categoriesData.items : [];
     },
     colors() {
-      return colors;
+      return this.colorsData ? this.colorsData.items : [];
     },
   },
   watch: {
@@ -163,6 +104,20 @@ export default {
       this.$emit('update:categoryId', 0);
       this.$emit('update:colorId', 0);
     },
+    loadCategories() {
+      axios
+        .get(API_BASE_URL.concat('/api/productCategories'))
+        .then((response) => { this.categoriesData = response.data; });
+    },
+    loadColors() {
+      axios
+        .get(API_BASE_URL.concat('/api/colors'))
+        .then((response) => { this.colorsData = response.data; });
+    },
+  },
+  created() {
+    this.loadCategories();
+    this.loadColors();
   },
 };
 </script>

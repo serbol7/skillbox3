@@ -22,7 +22,7 @@
         <label class="colors__label" :for="colorKey(product.id, icolor.id)">
           <input class="colors__radio sr-only" type="radio" name="color"
           :id="colorKey(product.id, icolor.id)" :value="colorKey(product.id, icolor.id)">
-          <span class="colors__value" :style="{ 'background-color': colorCode(icolor.id) }"
+          <span class="colors__value" :style="{ 'background-color': icolor.code }"
           style="border: 1px solid black;">
           </span>
         </label>
@@ -34,31 +34,27 @@
 <script>
 import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
-import colors from '@/data/colors';
 
 export default {
+  props: ['product'],
   data() {
     return {
-      // color: '#73B6EA',
+
     };
   },
   filters: {
     numberFormat,
   },
   computed: {
-    colors() {
-      return colors;
-    },
     colorKey() {
       return (productId, colorId) => (productId * 100 + colorId);
-    },
-    colorCode() {
-      return (colorId) => colors.find((color) => color.id === colorId).code;
     },
   },
   methods: {
     gotoPage,
   },
-  props: ['product'],
+  created() {
+
+  },
 };
 </script>
