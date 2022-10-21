@@ -13,19 +13,16 @@ export default new Vuex.Store({
     cartProductsData: [],
     cartProductsLoading: false,
     cartProductsLoadingFailed: false,
+    orderInfo: null,
   },
   mutations: {
-    // addProductToCart(state, { productId, amount }) {
-    //   const item = state.cartProducts.find((i) => i.productId === productId);
-    //   if (item) {
-    //     item.amount += amount;
-    //   } else {
-    //     state.cartProducts.push({
-    //       productId,
-    //       amount,
-    //     });
-    //   }
-    // },
+    updateOrderInfo(state, orderInfo) {
+      state.orderInfo = orderInfo;
+    },
+    resetCart(state) {
+      state.cartProducts = [];
+      state.cartProductsData = [];
+    },
     updateCartProductAmount(state, { productId, amount }) {
       const item = state.cartProducts.find((i) => i.productId === productId);
       if (item) {
@@ -80,10 +77,21 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    loadOrderInfo(context, orderId) {
+      return axios
+            .get(API_BASE_URL.concat('/api/orders/', orderId), {
+              params: {
+                userAccessKey: context.state.userAccessKey,
+              },
+            })
+            .then((response) => {
+              context.commit('updateOrderInfo', response.data);
+            });
+    },
     loadCart(context) {
       context.commit('updateCartProductsLoading', true);
       context.commit('updateCartProductsLoadingFailed', false);
-      return (new Promise((resolve) => setTimeout(resolve, 2000)))
+      return (new Promise((resolve) => setTimeout(resolve, 0)))
         .then(() => {
           return axios
             .get(API_BASE_URL.concat('/api/baskets'), {
@@ -104,7 +112,7 @@ export default new Vuex.Store({
         });
     },
     addProductToCart(context, { productId, amount }) {
-      return (new Promise((resolve) => setTimeout(resolve, 2000)))
+      return (new Promise((resolve) => setTimeout(resolve, 0)))
         .then(() => {
           return axios
             .post(API_BASE_URL.concat('/api/baskets/products'), {
